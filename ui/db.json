@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "id": "8e28",
+      "name": "Abbaslı Murad",
+      "email": "infomurad@gmail.com",
+      "password": "123456789"
+    },
+    {
+      "id": "4e96",
+      "name": "murad",
+      "email": "infomurad2@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "07c9",
+      "name": "fuad",
+      "email": "fuadinfo@gmail.com",
+      "password": "2014"
+    },
+    {
+      "id": "81b5",
+      "name": "Abbaslı Murad",
+      "email": "fuadinfo@gmail.com",
+      "password": "2000455"
+    },
+    {
+      "id": "74fa",
+      "name": "ibrahim",
+      "email": "ibrahim@gamil.com",
+      "password": "12345678"
+    }
+  ],
+  "delivery": [
+    {
+      "id": "85e3",
+      "user": "ibrahim@gamil.com",
+      "deliveryInfo": {
+        "firstName": "ibrahim",
+        "lastName": "humbetli",
+        "email": "ibrahim@gamil.com",
+        "street": "1233",
+        "city": "Azerbaijan",
+        "state": "Baku",
+        "zip": "123",
+        "country": "Nerimanov",
+        "phone": "0101000001"
+      },
+      "subtotal": 42,
+      "deliveryFee": 2,
+      "total": 44,
+      "createdAt": "2026-01-11T18:06:37.942Z"
+    }
+  ]
+}
