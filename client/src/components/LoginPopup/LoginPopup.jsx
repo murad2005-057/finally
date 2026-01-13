@@ -49,12 +49,32 @@ const LoginPopup = ({ setShowLogin }) => {
 
         localStorage.setItem("user", JSON.stringify(foundUser))
         setShowLogin(false)
-        window.location.href = "/" // HOME
+
+        if (foundUser.role === "admin") {
+            window.location.href = "/admin"
+        } else {
+            window.location.href = "/"
+        }
+    }
+
+    // 🔥 ADMIN BUTTON LOGIN
+    const handleAdminLogin = async () => {
+        const res = await fetch("http://localhost:3000/users?role=admin")
+        const admins = await res.json()
+
+        if (admins.length === 0) {
+            alert("Admin not found")
+            return
+        }
+
+        localStorage.setItem("user", JSON.stringify(admins[0]))
+        setShowLogin(false)
+        window.location.href = "/admin"
     }
 
     const handleGuest = () => {
         setShowLogin(false)
-        window.location.href = "/" // HOME
+        window.location.href = "/"
     }
 
     return (
@@ -100,6 +120,8 @@ const LoginPopup = ({ setShowLogin }) => {
                 <button type="submit">
                     {currState === "Sign Up" ? "Create account" : "Login"}
                 </button>
+
+            
 
                 {/* ✅ GUEST BUTTON */}
                 <button
