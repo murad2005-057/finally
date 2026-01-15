@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+li{
+    gap: 10px;
+    list-style: none;
+
+    cursor: pointer;
+    display: flex;
+}
+
+     
+.admin-layout{
+gap : 20px;
+    display: flex;
+    padding: 20px;
+      background: linear-gradient(
+    150deg,
+    rgba(195, 34, 34, 1) 27%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  color: transparent;
+  background-clip: text;
+}   
+
+
+.admin-header{
+    display: flex;
+    justify-content: space-between;
+        background: linear-gradient(
+    150deg,
+    rgba(195, 34, 34, 1) 27%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  color: transparent;
+  background-clip: text;
+  text-align: center;
+  align-items: center;
+  gap: 20px;
+
+
+  
+ 
+}

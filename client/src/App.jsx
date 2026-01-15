@@ -28,8 +28,8 @@ const App = () => {
 
           {/* 🔐 ADMIN ROUTES */}
           <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="products" element={<AdminProducts />} />
+            <Route path="/admin-dashboard" index element={<AdminDashboard />} />
+            <Route path="/admin-products" element={<AdminProducts />} />
           </Route>
         </Routes>
       </div>

@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom"
+import'./Admin.css'
 
 const AdminLayout = () => {
 
@@ -14,23 +15,23 @@ const AdminLayout = () => {
     }
 
     return (
-        <div>
-            {/* 🔝 ADMIN HEADER */}
-            <div style={{
-                display: "flex",
-                justifyContent: "space-between",
-                padding: "15px",
-                background: "#222",
-                color: "#fff"
-            }}>
+        <div className="admin-layout">
+        
+            <div className="admin-header">
                 <h3>Admin Panel</h3>
-                <button onClick={handleLogout}>Logout</button>
+          
+          <ul>
+            <li>Dashboard</li>
+            <li>Product</li>
+        
+          </ul>
             </div>
 
-            {/* 👇 ADMIN CONTENT */}
+       
             <Outlet />
         </div>
     )
 }
 
 export default AdminLayout
+

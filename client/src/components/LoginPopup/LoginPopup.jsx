@@ -123,7 +123,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
             
 
-                {/* ✅ GUEST BUTTON */}
+             
                 <button
                     type="button"
                     className="guest-btn"
