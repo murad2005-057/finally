@@ -8,7 +8,7 @@ import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import AdminLayout from "./admin/AdminLayout";
 import AdminDashboard from "./admin/AdminDashboard";
-import AdminProducts from "./admin/AdminProducts";
+
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -29,7 +29,7 @@ const App = () => {
           {/* 🔐 ADMIN ROUTES */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="/admin-dashboard" index element={<AdminDashboard />} />
-            <Route path="/admin-products" element={<AdminProducts />} />
+         
           </Route>
         </Routes>
       </div>
