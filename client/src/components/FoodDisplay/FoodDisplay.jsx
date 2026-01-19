@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './FoodDisplay.css'
 import { StoreContext } from '../../conText/StoreContext'
 import FoodItem from '../FoodItem/FoodItem'
@@ -6,6 +6,16 @@ import FoodItem from '../FoodItem/FoodItem'
 const FoodDisplay = ({ category }) => {
 
     const { food_list } = useContext(StoreContext)
+    const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/products")
+      .then(res => res.json())
+      .then(data => setProducts(data));
+  }, []);
+
+
+  
 
     return (
         <div className='food-display' id='food-display'>
@@ -29,6 +39,17 @@ const FoodDisplay = ({ category }) => {
                 })}
             </div>
         </div>
+
+
+    //       <div  className='food-display' id='food-display'>
+    //   {products.map(item => (
+    //     <div className="food-display-list" key={item.id}>
+    //       <h3>{item.name}</h3>
+    //       {/* Şəkillər public/images-dədirsə belə işləyəcək */}
+    //       <img src={item.image} alt={item.name}  />
+    //     </div>
+    //   ))}
+    // </div>
     )
 }
 

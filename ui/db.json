@@ -83,7 +83,7 @@
     {
       "id": "1",
       "name": "Greek Salad",
-      "image": "../src/food_1.png",
+      "image": "../client/src/assets/food_1.png",
       "price": 12,
       "description": "Food provides essential nutrients for overall health and well-being",
       "category": "Salad"
