@@ -16,15 +16,7 @@ const AdminLayout = () => {
                 <h3>Admin Panel</h3>
 
                 <ul>
-                    <li>
-                        <NavLink 
-                            to="/admin-dashboard"
-                            end
-                            className={({ isActive }) => isActive ? "active" : ""}
-                        >
-                            Dashboard
-                        </NavLink>
-                    </li>
+        
 
                     <li>
                         <NavLink 

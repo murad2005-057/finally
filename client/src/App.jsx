@@ -7,7 +7,7 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import AdminLayout from "./admin/AdminLayout";
-import AdminDashboard from "./admin/AdminDashboard";
+import AdminDashboard from "./admin/AdminProduct";
 
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
 
           {/* 🔐 ADMIN ROUTES */}
           <Route path="/admin" element={<AdminLayout />}>
-            <Route path="/admin-dashboard" index element={<AdminDashboard />} />
+            <Route path="/admin-products" index element={<AdminDashboard />} />
          
           </Route>
         </Routes>

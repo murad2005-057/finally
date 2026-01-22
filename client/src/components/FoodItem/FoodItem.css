@@ -5,7 +5,11 @@
     box-shadow: 0px 0px 10px #00000015;
     transition: 0.3s;
     animation: fadeIn 1s;
-    
+}
+
+/* ƏSAS PROBLEM BURADA İDİ */
+.food-item-image-container {
+    position: relative;
 }
 
 .food-item-image {
@@ -13,15 +17,52 @@
     border-radius: 15px 15px 0px 0px;
 }
 
+/* ADD ICON */
+.food-item-image-container .add {
+    width: 35px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* COUNTER */
+.food-item-counter {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background-color: white;
+    z-index: 2;
+}
+
+.food-item-counter img {
+    width: 28px;
+    cursor: pointer;
+}
+
+.food-item-counter p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* INFO */
 .food-item-info {
     padding: 20px;
-      background: linear-gradient(
-    180deg,
-    rgba(195, 34, 34, 1) 27%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  color: transparent;
-  background-clip: text;
+    background: linear-gradient(
+        180deg,
+        rgba(195, 34, 34, 1) 27%,
+        rgba(255, 255, 255, 1) 100%
+    );
+    color: transparent;
+    background-clip: text;
 }
 
 .food-item-name-rating {
@@ -41,13 +82,6 @@
 }
 
 .food-item-desc {
-      background: linear-gradient(
-    180deg,
-    rgba(195, 34, 34, 1) 27%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  color: transparent;
-  background-clip: text;
     font-size: 12px;
 }
 
@@ -57,32 +91,69 @@
     font-weight: 500;
     margin: 10px 0px;
 }
-
-.food-item-image-conteiner {
-    position: relative;
+@media (max-width: 600px) {
+    .food-item-name-rating img {
+        width: 50px;
+    }
 }
 
-.food-item-image-conteiner .add {
-    width: 35px;
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    cursor: pointer;
-    border-radius: 50%;
+@media (max-width: 400px) {
+    .food-item-price {
+        font-size: 18px;
+    }
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes slideInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.food-item {
+    animation: slideInUp 0.5s ease forwards;
+}
+.food-item:hover {
+    box-shadow: 0px 0px 15px #00000030;
+    transform: translateY(-5px);
+}
+.food-item-info {
+    animation: fadeIn 1s ease forwards;
+}
+.food-item-image-container .add:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.food-item-counter img:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
 .food-item-counter {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px;
-    border-radius: 50%;
-    background-color: white;
+    box-shadow: 0px 0px 10px #00000020;
 }
-
-.food-item-counter img {
-    width: 30px;
+.food-item-info:hover {
+    color: red;
+    transition: 0.5s;
+}
+@media (max-width: 500px) {
+    .food-item-info {
+        padding: 15px;
+    }
+    .food-item-name-rating p {
+        font-size: 16px;
+    }
+    .food-item-desc {
+        font-size: 10px;
+    }
 }

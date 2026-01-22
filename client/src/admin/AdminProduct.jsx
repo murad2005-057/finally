@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const AdminDashboard = () => {
+const AdminProduct = () => {
 
     const [users, setUsers] = useState([])
     const [products, setProducts] = useState([])
@@ -24,4 +24,4 @@ const AdminDashboard = () => {
     )
 }
 
-export default AdminDashboard
+export default AdminProduct;
