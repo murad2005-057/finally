@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import FoodItem from "../components/FoodItem/FoodItem";
 
-const AdminProduct = () => {
+const Products = () => {
+  const [products, setProducts] = useState([]);
 
-    const [users, setUsers] = useState([])
-    const [products, setProducts] = useState([])
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("products")) || [];
+    setProducts(stored);
+  }, []);
 
-    useEffect(() => {
-        fetch("http://localhost:3000/users")
-            .then(res => res.json())
-            .then(data => setUsers(data))
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px", padding: "30px" }}>
+      {products.map((item) => (
+        <FoodItem
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          price={item.price}
+          description={item.description}
+          image={item.image}
+        />
+      ))}
+    </div>
+  );
+};
 
-        fetch("http://localhost:3000/products")
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
-
-    return (
-        <div>
-            <h2>Admin Dashboard</h2>
-            <p>Users: {users.length}</p>
-            <p>Products: {products.length}</p>
-        </div>
-    )
-}
-
-export default AdminProduct;
+export default Products;

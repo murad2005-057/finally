@@ -1,41 +1,40 @@
-import React from 'react'
-import './Footer.css'
-import { assets } from '../../assets/assets'
+import React from "react";
+import "./Footer.css";
+import { assets } from "../../assets/assets";
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
-    return (
-        <div className='footer' id='footer'>
-            <div className="footer-content">
-                <div className="footer-content-left">
-              
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus voluptatem, delectus magnam neque maiores cumque, necessitatibus architecto consequatur quod fuga cum. Facere sint dolor blanditiis sunt, modi maiores quam dolorum!</p>
-                    <div className="footer-social-icons">
-                        <img src={assets.facebook_icon} alt="" />
-                        <img src={assets.twitter_icon} alt="" />
-                        <img src={assets.linkedin_icon} alt="" />
-                    </div>
-                </div>
-                <div className="footer-content-center">
-                    <h2>COMPANY</h2>
-                    <ul>
-                        <li>Home</li>
-                        <li>About us</li>
-                        <li>Delivery</li>
-                        <li>Privacy policy</li>
-                    </ul>
-                </div>
-                <div className="footer-content-right">
-                    <h2>GET IN TOUCH</h2>
-                    <ul>
-                        <li>+1-212-456-7890</li>
-                        <li>contact@arsenal-restaurant.com</li>
-                    </ul>
-                </div>
-            </div>
-            <hr />
-        
-        </div>
-    )
-}
+  return (
+    <div className="footer" id="footer">
+      <div className="footer-content">
+        <div className="footer-content-left">
+          <h1>Arsenal Restaurant</h1>
 
-export default Footer
+          <div className="footer-social-icons">
+            <a href="https://www.facebook.com/Arsenal/" target="_blank" rel="noopener noreferrer">
+              <FaFacebook className="icon facebook" size={25} />
+            </a>
+            <a href="https://www.instagram.com/arsenal/" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="icon instagram" size={25} />
+            </a>
+            <a href="https://www.youtube.com/@arsenal" target="_blank" rel="noopener noreferrer">
+              <FaYoutube className="icon youtube" size={25} />
+            </a>
+          </div>
+        </div>
+
+        <div className="footer-content-right">
+          <h2>GET IN TOUCH</h2>
+          <ul>
+            <li>+1-212-456-7890</li>
+            <li>contact@arsenal-restaurant.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;

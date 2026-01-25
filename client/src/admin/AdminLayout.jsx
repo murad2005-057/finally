@@ -1,37 +1,33 @@
-import { Navigate, Outlet, NavLink } from "react-router-dom"
-import './Admin.css'
+import { Navigate, Outlet, NavLink } from "react-router-dom";
+import "./Admin.css";
 
 const AdminLayout = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
 
-    const user = JSON.parse(localStorage.getItem("user"))
+  if (!user || user.role !== "admin") {
+    return <Navigate to="/" />;
+  }
 
-    if (!user || user.role !== "admin") {
-        return <Navigate to="/" />
-    }
+  return (
+    <div className="admin-layout">
+      <div className="admin-header">
+        <h3>Admin Panel</h3>
 
-    return (
-        <div className="admin-layout">
+        <ul>
+          <li>
+            <NavLink
+              to="products"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Product
+            </NavLink>
+          </li>
+        </ul>
+      </div>
 
-            <div className="admin-header">
-                <h3>Admin Panel</h3>
+      <Outlet />
+    </div>
+  );
+};
 
-                <ul>
-        
-
-                    <li>
-                        <NavLink 
-                            to="/admin-products"
-                            className={({ isActive }) => isActive ? "active" : ""}
-                        >
-                            Product
-                        </NavLink>
-                    </li>
-                </ul>
-            </div>
-
-            <Outlet />
-        </div>
-    )
-}
-
-export default AdminLayout
+export default AdminLayout;
