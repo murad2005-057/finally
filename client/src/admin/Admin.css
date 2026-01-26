@@ -1,44 +1,58 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-li {
-  gap: 10px;
-  list-style: none;
-
-  cursor: pointer;
-  display: flex;
-}
-
 .admin-layout {
-  gap: 20px;
   display: flex;
+  height: 100vh;
+}
+
+.admin-sidebar {
+  width: 220px;
+  background: #212529;
+  color: #fff;
   padding: 20px;
-  color: red;
 }
 
-.admin-header {
-  display: flex;
-  color: red;
-  text-align: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.admin-header ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-.admin-header a {
-  color: red;
+.admin-sidebar a {
+  display: block;
+  color: #adb5bd;
+  margin: 10px 0;
   text-decoration: none;
 }
 
-.admin-header a.active {
-  color: silver;
-  font-weight: bold;
+.admin-sidebar a.active {
+  color: #fff;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 30px;
+  background: #f8f9fa;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.primary { background: #0d6efd; }
+.warning { background: #ffc107; }
+.success { background: #198754; }
+.danger  { background: #dc3545; }
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.chart {
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
 }

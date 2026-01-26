@@ -3,133 +3,113 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 100;
 }
 
+/* Logo Stili */
 .navbar .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-weight: 500;
   font-size: 24px;
-  background: linear-gradient(
-    150deg,
-    rgba(195, 34, 34, 1) 27%,
-    rgba(255, 255, 255, 1) 100%
-  );
+  background: linear-gradient(150deg, rgba(195, 34, 34, 1) 27%, rgba(100, 100, 100, 1) 100%);
   color: transparent;
   background-clip: text;
-  width: 160px;
-  object-fit: contain;
+  -webkit-background-clip: text;
+  text-decoration: none;
 }
 
 .navbar-menu {
   display: flex;
+  align-items: center;
   list-style: none;
   gap: 20px;
-  background: linear-gradient(
-    180deg,
-    rgba(195, 34, 34, 1) 27%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  color: transparent;
-  background-clip: text;
   font-size: 18px;
 }
 
-.navbar-right {
+.navbar-menu a { text-decoration: none; color: #49557e; }
+
+.navbar-right-desktop {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 
-.navbar button {
-  background: transparent;
-  font-size: 16px;
-  color: #000;
-  border: 1px solid red;
-  padding: 10px 30px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.navbar button:hover {
-  background-color: red;
-  color: #fff;
-}
-
-.navbar .active {
-  padding-bottom: 2px;
-  border-bottom: 2px solid #000;
-}
-
-.navbar li {
-  cursor: pointer;
-}
-
-.navbar-search-icon {
-  position: relative;
-}
-
+/* Səbət nöqtəsi */
+.navbar-search-icon { position: relative; }
+.navbar-search-icon img { width: 22px; }
 .navbar-search-icon .dot {
   position: absolute;
-  min-width: 10px;
-  min-height: 10px;
-  background-color: red;
-  border-radius: 5px;
-  top: -8px;
-  right: -8px;
+  min-width: 10px; min-height: 10px;
+  background-color: red; border-radius: 50%;
+  top: -8px; right: -8px;
 }
 
-@media (max-width: 1050px) {
-  .navbar .logo {
-    width: 140px;
-  }
+/* Kompüterdə gizli qalsın */
+.mobile-only-cart { display: none; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.line { width: 25px; height: 3px; background-color: rgba(195, 34, 34, 1); transition: 0.3s; }
 
-  .navbar-menu {
-    gap: 20px;
-    font-size: 17px;
-  }
-
-  .navbar-right {
-    gap: 30px;
-  }
-
-  .navbar-right img {
-    width: 22px;
-  }
-
-  .navbar-right button {
-    padding: 8px 25px;
-  }
+/* DÜYMƏ STİLİ */
+.nav-btn {
+  background: transparent;
+  border: 1px solid red;
+  padding: 10px 25px;
+  border-radius: 50px;
+  cursor: pointer;
 }
 
-@media (max-width: 900px) {
-  .navbar .logo {
-    width: 120px;
-  }
-
-  .navbar-menu {
-    gap: 15px;
-    font-size: 16px;
-  }
-
-  .navbar-right {
-    gap: 20px;
-  }
-
-  .navbar-right img {
-    width: 20px;
-  }
-
-  .navbar-right button {
-    padding: 7px 20px;
-    font-size: 15px;
-  }
-}
-
+/* --- MOBİL REJİM (MAX-WIDTH: 750px) --- */
 @media (max-width: 750px) {
-  .navbar-menu {
-    display: none;
+  /* Logo istisna olmaqla hər şeyi sağdan gizlə */
+  .navbar-right-desktop {
+    display: none; 
   }
+
+  .hamburger {
+    display: flex;
+    z-index: 101;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 0; right: -100%;
+    height: 100vh; width: 260px;
+    background-color: #fff;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    transition: 0.4s ease;
+    z-index: 100;
+  }
+
+  .navbar-menu.mobile-visible {
+    right: 0;
+  }
+
+  /* Səbəti menyunun içində göstər */
+  .mobile-only-cart {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .mobile-cart-link {
+    text-decoration: none;
+    color: #49557e;
+  }
+
+  .navbar-menu-btn-wrapper { width: 80%; }
+  .nav-btn { width: 100%; }
+
+  .nav-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 90;
+  }
+
+  /* X animasiyası */
+  .line.open:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+  .line.open:nth-child(2) { opacity: 0; }
+  .line.open:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 }

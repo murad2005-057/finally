@@ -5,27 +5,26 @@ const AdminLayout = () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (!user || user.role !== "admin") {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 
   return (
     <div className="admin-layout">
-      <div className="admin-header">
-        <h3>Admin Panel</h3>
 
-        <ul>
-          <li>
-            <NavLink
-              to="products"
-              className={({ isActive }) => (isActive ? "active" : "")}
-            >
-              Product
-            </NavLink>
-          </li>
-        </ul>
-      </div>
 
-      <Outlet />
+      
+      <aside className="admin-sidebar">
+
+        
+        <h3>Start Bootstrap</h3>
+
+        <NavLink to="/admin/product">Product</NavLink>
+
+      </aside>
+
+      <main className="admin-content">
+        <Outlet />
+      </main>
     </div>
   );
 };

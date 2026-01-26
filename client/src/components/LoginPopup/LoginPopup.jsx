@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom"   // ✅ ƏLAVƏ
 import './LoginPopup.css'
 import { assets } from '../../assets/assets'
 
 const LoginPopup = ({ setShowLogin }) => {
+
+    const navigate = useNavigate()               // ✅ ƏLAVƏ
 
     const [currState, setCurrState] = useState("Login")
     const [formData, setFormData] = useState({
@@ -34,7 +37,7 @@ const LoginPopup = ({ setShowLogin }) => {
             return
         }
 
-        // ================= LOGIN (json-server) =================
+        // ================= LOGIN =================
         const res = await fetch("http://localhost:3000/users")
         const users = await res.json()
 
@@ -50,14 +53,15 @@ const LoginPopup = ({ setShowLogin }) => {
         localStorage.setItem("user", JSON.stringify(foundUser))
         setShowLogin(false)
 
+        // ✅ ADMIN / USER YÖNLƏNDİRMƏ
         if (foundUser.role === "admin") {
-            window.location.href = "/admin"
+            navigate("/admin")
         } else {
-            window.location.href = "/"
+            navigate("/")
         }
     }
 
-    // 🔥 ADMIN BUTTON LOGIN
+    // ================= ADMIN QUICK LOGIN =================
     const handleAdminLogin = async () => {
         const res = await fetch("http://localhost:3000/users?role=admin")
         const admins = await res.json()
@@ -69,12 +73,13 @@ const LoginPopup = ({ setShowLogin }) => {
 
         localStorage.setItem("user", JSON.stringify(admins[0]))
         setShowLogin(false)
-        window.location.href = "/admin"
+        navigate("/admin")        // ✅ DÜZƏLDİ
     }
 
+    // ================= GUEST =================
     const handleGuest = () => {
         setShowLogin(false)
-        window.location.href = "/"
+        navigate("/")             // ✅ DÜZƏLDİ
     }
 
     return (
@@ -121,9 +126,6 @@ const LoginPopup = ({ setShowLogin }) => {
                     {currState === "Sign Up" ? "Create account" : "Login"}
                 </button>
 
-            
-
-             
                 <button
                     type="button"
                     className="guest-btn"

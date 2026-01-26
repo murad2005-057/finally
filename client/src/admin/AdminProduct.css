@@ -1,0 +1,90 @@
+.add-product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: #f8f9fa;
+  border: 2px dashed #198754;
+  color: #198754;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.add-product-card span {
+  font-size: 36px;
+}
+
+.add-product-card:hover {
+  background: #e9f7ef;
+}
+
+.section-nav {
+  margin-bottom: 20px;
+}
+
+.section-nav button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #dee2e6;
+}
+
+.section-nav button.active {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.delete-btn {
+  margin-top: 10px;
+  padding: 6px;
+  width: 100%;
+  border: none;
+  background: #dc3545;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-btn {
+  margin-top: 8px;
+  padding: 6px;
+  width: 100%;
+  border: none;
+  background: #198754;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.special-card {
+  background-color: #f0f8ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 2px dashed #aaa;
+}
+

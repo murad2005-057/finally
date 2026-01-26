@@ -1,103 +1,76 @@
-.cart {
-  margin-top: 100px;
+.place-order {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 100px;
 }
 
-.cart-items-title {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
-  align-items: center;
-  color: grey;
-  font-size: max(1vw, 12px);
+.place-order-left {
+    width: 100%;
+    max-width: max(30vw, 500px);
 }
 
-.cart-items-item {
-  margin: 10px 0px;
-  color: black;
+.place-order-left .title {
+    font-size: max(2vw, 25px);
+    font-weight: 600;
+    margin-bottom: 50px;
 }
 
-.cart-items-item img {
-  width: 50px;
+.place-order-left input {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    outline-color: tomato;
 }
 
-.cart hr {
-  height: 1px;
-  background-color: #e2e2e2;
-  border: none;
+.place-order-left .multi-fields {
+    display: flex;
+    gap: 10px;
 }
 
-.cart-items-item .crose {
-  cursor: pointer;
+.place-order-right {
+    width: 100%;
+    max-width: max(40%, 500px);
 }
 
 .cart-button {
-  margin-top: 80px;
-  display: flex;
-  justify-content: space-between;
-  gap: max(12vw, 20px);
+    width: 100%;
+    padding: 12px;
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
 }
 
-.cart-total {
-  flex: 1;
-  gap: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: #555;
-}
-
-.cart-total hr {
-  margin: 10px 0px;
-}
-
-.cart-total button {
-  border: none;
-  color: white;
-  background-color: red;
-  width: max(15vw, 200px);
-  padding: 12px 0px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.cart-promocode {
-  flex: 1;
-}
-
-.cart-promocode p {
-  color: #555;
-}
-
-.cart-promocode-input {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #eaeaea;
-  border-radius: 4px;
-}
-
-.cart-promocode-input input {
-  background: transparent;
-  border: none;
-  outline: none;
-  padding-left: 10px;
-}
-
-.cart-promocode-input button {
-  width: max(10vw, 150px);
-  padding: 12px 5px;
-  border: none;
-  background-color: red;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
+/* --- MOBİL REJİM (750px və aşağı) --- */
 @media (max-width: 750px) {
-  .cart-button {
-    flex-direction: column-reverse;
-  }
+    .place-order {
+        flex-direction: column; /* SAĞ TƏRƏFİ AŞAĞI SALIR */
+        gap: 30px;
+        margin-top: 50px;
+        padding: 0 15px;
+    }
 
-  .cart-promocode {
-    justify-content: start;
-  }
+    .place-order-left, .place-order-right {
+        max-width: 100%; /* Hər iki blok bütün eni tutur */
+    }
+
+    .place-order-left .title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .cart-total {
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05); /* Şəkildəki kimi yüngül kölgə */
+    }
 }

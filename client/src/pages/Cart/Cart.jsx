@@ -1,70 +1,55 @@
 import React, { useContext } from 'react'
-import "./Cart.css"
+import '../Cart/Cart.css'
 import { StoreContext } from '../../conText/StoreContext'
-import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
-
-    const { cartItems, food_list, removeFromCart, getTotalCartAmount } = useContext(StoreContext)
-
-    const navigate = useNavigate();
+    const { getTotalCartAmount } = useContext(StoreContext);
 
     return (
-        <div className='cart'>
-            <div className="cart-items">
-                <div className="cart-items-title">
-                    <p>Items</p>
-                    <p>Title</p>
-                    <p>Price</p>
-                    <p>Quantity</p>
-                    <p>Total</p>
-                    <p>Remove</p>
+        <form className='place-order'>
+            {/* SOL TƏRƏF: Məlumat Girişi */}
+            <div className="place-order-left">
+                <p className="title">Delivery Information</p>
+                <div className="multi-fields">
+                    <input type="text" placeholder='First name' />
+                    <input type="text" placeholder='Last name' />
                 </div>
-                <br />
-                <hr />
-                {food_list.map((item, index) => {
-                    if (cartItems[item._id] > 0) {
-                        return (
-                            <div>
-                                <div className='cart-items-title cart-items-item'>
-                                    <img src={item.image} alt="" />
-                                    <p>{item.name}</p>
-                                    <p>${item.price}</p>
-                                    <p>{cartItems[item._id]}</p>
-                                    <p>${item.price * cartItems[item._id]}</p>
-                                    <p onClick={() => removeFromCart(item._id)} className='crose'>x</p>
-                                </div>
-                                <hr />
-                            </div>
-                        )
-                    }
-                })}
+                <input type="email" placeholder='Email address' />
+                <input type="text" placeholder='Street' />
+                <div className="multi-fields">
+                    <input type="text" placeholder='City' />
+                    <input type="text" placeholder='State' />
+                </div>
+                <div className="multi-fields">
+                    <input type="text" placeholder='Zip code' />
+                    <input type="text" placeholder='Country' />
+                </div>
+                <input type="text" placeholder='Phone' />
             </div>
-            <div className="cart-button">
+
+            {/* SAĞ TƏRƏF: Səbət Yekunu (Mobildə formanın altına düşəcək) */}
+            <div className="place-order-right">
                 <div className="cart-total">
-                    <h2>Cart Total</h2>
-                    <div>
-                        <div className="cart-total-details">
-                            <p>Subtotal</p>
-                            <p>${getTotalCartAmount()}</p>
-                        </div>
-                        <hr />
-                        <div className="cart-total-details">
-                            <p>Delivery Fee</p>
-                            <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
-                        </div>
-                        <hr />
-                        <div className="cart-total-details">
-                            <p>Total</p>
-                            <p>${getTotalCartAmount() === 0?0:getTotalCartAmount() + 2}</p>
-                        </div>
+                    <h2>Cart Totals</h2>
+                    <div className="cart-total-details">
+                        <p>Subtotal</p>
+                        <p>${getTotalCartAmount()}</p>
                     </div>
-                    <button onClick={() => navigate('/order')}>PROCEED TO CHECKOUT</button>
+                    <hr />
+                    <div className="cart-total-details">
+                        <p>Delivery Fee</p>
+                        <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
+                    </div>
+                    <hr />
+                    <div className="cart-total-details">
+                        <b>Total</b>
+                        <b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
+                    </div>
+                    <button className='cart-button' type='submit'>PROCEED TO PAYMENT</button>
                 </div>
-           
             </div>
-        </div>
+        </form>
     )
 }
 
-export default Cart
+export default Cart;

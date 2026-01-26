@@ -7,9 +7,10 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import AdminLayout from "./admin/AdminLayout";
+
+
 import AdminProduct from "./admin/AdminProduct";
-
-
+import AdminAddProduct from "./admin/AdminAddProduct";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -29,8 +30,9 @@ const App = () => {
 
           {/* 🔐 ADMIN ROUTES */}
           <Route path="/admin" element={<AdminLayout />}>
-            <Route path="products" index element={<AdminProduct />} />
-         
+           
+            <Route path="product" element={<AdminProduct />} />
+            <Route path="product/add" element={<AdminAddProduct />} />
           </Route>
         </Routes>
       </div>
