@@ -42,6 +42,12 @@
       "name": "       ",
       "email": "////////@gamil.com",
       "password": "        "
+    },
+    {
+      "id": "1226",
+      "name": "Abbaslı Murad",
+      "email": "info1murad@gmail.com",
+      "password": "123456789"
     }
   ],
   "delivery": [

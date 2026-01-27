@@ -8,7 +8,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
     const navigate = useNavigate()               // ✅ ƏLAVƏ
 
-    const [currState, setCurrState] = useState("Login")
+    const [currState, setCurrState] = useState("login")
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -28,7 +28,7 @@ const LoginPopup = ({ setShowLogin }) => {
         e.preventDefault()
 
         // ================= REGISTER =================
-        if (currState === t("login.signUp") || currState === "Sign Up") {
+        if (currState === "signup") {
             await fetch("http://localhost:3000/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -36,7 +36,7 @@ const LoginPopup = ({ setShowLogin }) => {
             })
 
             alert(t("login.registerSuccess"))
-            setCurrState(t("login.login"))
+            setCurrState("login")
             return
         }
 
@@ -89,7 +89,7 @@ const LoginPopup = ({ setShowLogin }) => {
         <div className='login-popup'>
             <form className="login-popup-container" onSubmit={handleSubmit}>
                 <div className="login-popup-title">
-                            <h2>{currState}</h2>
+                            <h2>{currState === "signup" ? t("login.signUp") : t("login.login")}</h2>
                     <img
                         src={assets.cross_icon}
                         alt=""
@@ -98,7 +98,7 @@ const LoginPopup = ({ setShowLogin }) => {
                 </div>
 
                 <div className="login-popup-inputs">
-                    {currState === t("login.signUp") || currState === "Sign Up" && (
+                    {(currState === "signup") && (
                         <input
                             type="text"
                             name="name"
@@ -126,7 +126,7 @@ const LoginPopup = ({ setShowLogin }) => {
                 </div>
 
                 <button type="submit">
-                    {currState === t("login.signUp") || currState === "Sign Up" ? t("login.createAccount") : t("login.loginBtn")}
+                    {currState === "signup" ? t("login.createAccount") : t("login.loginBtn")}
                 </button>
 
                 <button
@@ -137,9 +137,9 @@ const LoginPopup = ({ setShowLogin }) => {
                     {t("login.continueGuest")}
                 </button>
 
-                {currState === t("login.login") || currState === "Login"
-                    ? <p>{t("login.createNewAccount")} <span onClick={() => setCurrState(t("login.signUp"))}>{t("login.clickHere")}</span></p>
-                    : <p>{t("login.alreadyHave")} <span onClick={() => setCurrState(t("login.login"))}>{t("login.loginHere")}</span></p>
+                {currState === "login"
+                    ? <p>{t("login.createNewAccount")} <span onClick={() => setCurrState("signup")}>{t("login.clickHere")}</span></p>
+                    : <p>{t("login.alreadyHave")} <span onClick={() => setCurrState("login")}>{t("login.loginHere")}</span></p>
                 }
             </form>
         </div>
