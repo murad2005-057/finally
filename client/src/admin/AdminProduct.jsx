@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminProduct.css";
+import { LanguageContext } from '../i18n/LanguageProvider'
 
 const ITEMS_PER_SECTION = 10;
 
@@ -36,12 +37,12 @@ const AdminProduct = () => {
 
   return (
     <div>
-      <h2>Products</h2>
+      <h2>{useContext(LanguageContext).t("admin.products")}</h2>
 
       {/* SECTION NAV */}
       <div className="section-nav">
         {Array.from({ length: sectionsCount }).map((_, i) => (
-          <button
+            <button
             key={i}
             className={section === i ? "active" : ""}
             onClick={() => setSection(i)}
@@ -63,7 +64,7 @@ const AdminProduct = () => {
               className="delete-btn"
               onClick={() => deleteProduct(product.id)}
             >
-              Delete
+              {useContext(LanguageContext).t("admin.delete")}
             </button>
           </div>
         ))}
@@ -75,7 +76,7 @@ const AdminProduct = () => {
             onClick={() => navigate("/admin/product/add")}
           >
             <span>＋</span>
-            <p>Add Product</p>
+            <p>{useContext(LanguageContext).t("admin.addProductCard")}</p>
           </div>
         )}
       </div>

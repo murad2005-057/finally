@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './FoodDisplay.css'
 import FoodItem from '../FoodItem/FoodItem'
+import { LanguageContext } from '../../i18n/LanguageProvider'
 
 const FoodDisplay = ({ category }) => {
     const [products, setProducts] = useState([]);
@@ -11,9 +12,11 @@ const FoodDisplay = ({ category }) => {
             .then(data => setProducts(data));
     }, []);
 
+    const { t } = useContext(LanguageContext)
+
     return (
         <div className='food-display' id='food-display'>
-            <h2>Top dishes near you</h2>
+            <h2>{t("foodDisplay.title")}</h2>
             <div className="food-display-list">
                 {products
                     .slice() 

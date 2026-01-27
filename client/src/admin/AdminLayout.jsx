@@ -1,5 +1,7 @@
 import { Navigate, Outlet, NavLink } from "react-router-dom";
 import "./Admin.css";
+import { useContext } from "react";
+import { LanguageContext } from "../i18n/LanguageProvider";
 
 const AdminLayout = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -14,11 +16,10 @@ const AdminLayout = () => {
 
       
       <aside className="admin-sidebar">
-
         
-        <h3>Start Bootstrap</h3>
+        <h3>{useContext(LanguageContext).t("admin.brand")}</h3>
 
-        <NavLink to="/admin/product">Product</NavLink>
+        <NavLink to="/admin/product">{useContext(LanguageContext).t("admin.product")}</NavLink>
 
       </aside>
 

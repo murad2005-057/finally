@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './ExploreMenu.css'
+import { LanguageContext } from '../../i18n/LanguageProvider'
 
 const ExploreMenu = ({ category, setCategory }) => {
 
@@ -12,11 +13,13 @@ const ExploreMenu = ({ category, setCategory }) => {
             .catch(err => console.error("Menu fetch error:", err))
     }, [])
 
+    const { t } = useContext(LanguageContext)
+
     return (
         <div className='explore-menu' id='explore-menu'>
-            <h1>Explore our menu</h1>
+            <h1>{t("explore.title")}</h1>
             <p className='explore-menu-text'>
-                Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise.
+                {t("explore.subtitle")}
             </p>
 
             <div className="explore-menu-list">

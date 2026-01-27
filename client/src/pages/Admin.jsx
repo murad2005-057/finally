@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
+import { LanguageContext } from '../i18n/LanguageProvider'
 
 const Admin = () => {
 
@@ -23,21 +24,21 @@ const Admin = () => {
     }, [])
 
     if (!admin) {
-        return <h2 style={{ padding: "30px" }}>Loading admin data...</h2>
+        return <h2 style={{ padding: "30px" }}>{useContext(LanguageContext).t("admin.loading")}</h2>
     }
 
     return (
         <div style={{ padding: "30px" }}>
-            <h1>Admin Panel</h1>
+            <h1>{useContext(LanguageContext).t("admin.panel")}</h1>
 
             <div style={{
                 border: "1px solid #ccc",
                 padding: "20px",
                 maxWidth: "400px"
             }}>
-                <p><b>Name:</b> {admin.name}</p>
-                <p><b>Email:</b> {admin.email}</p>
-                <p><b>Role:</b> {admin.role}</p>
+                <p><b>{useContext(LanguageContext).t("admin.name")}:</b> {admin.name}</p>
+                <p><b>{useContext(LanguageContext).t("admin.email")}:</b> {admin.email}</p>
+                <p><b>{useContext(LanguageContext).t("admin.role")}:</b> {admin.role}</p>
             </div>
         </div>
     )

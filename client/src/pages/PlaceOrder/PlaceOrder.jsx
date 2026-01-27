@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import "./PlaceOrder.css"
 import { StoreContext } from '../../conText/StoreContext'
+import { LanguageContext } from '../../i18n/LanguageProvider'
 
 const PlaceOrder = () => {
 
@@ -45,26 +46,27 @@ const PlaceOrder = () => {
             body: JSON.stringify(orderData)
         })
 
-        alert("Order placed successfully!")
+        alert(useContext(LanguageContext).t("order.success"))
     }
 
     return (
         <form className='place-order' onSubmit={handleSubmit}>
+
             <div className="place-order-left">
-                <p className='title'>Delivery Information</p>
+                <p className='title'>{useContext(LanguageContext).t("cart.deliveryInformation")}</p>
 
                 <div className="muliti-fields">
                     <input
                         type="text"
                         name="firstName"
-                        placeholder="First name"
+                        placeholder={useContext(LanguageContext).t("cart.placeholder.firstName")}
                         required
                         onChange={handleChange}
                     />
                     <input
                         type="text"
                         name="lastName"
-                        placeholder="Last name"
+                        placeholder={useContext(LanguageContext).t("cart.placeholder.lastName")}
                         required
                         onChange={handleChange}
                     />
@@ -73,7 +75,7 @@ const PlaceOrder = () => {
                 <input
                     type="email"
                     name="email"
-                    placeholder="Email address"
+                    placeholder={useContext(LanguageContext).t("cart.placeholder.email")}
                     required
                     onChange={handleChange}
                 />
@@ -81,7 +83,7 @@ const PlaceOrder = () => {
                 <input
                     type="text"
                     name="street"
-                    placeholder="Street"
+                    placeholder={useContext(LanguageContext).t("cart.placeholder.street")}
                     required
                     onChange={handleChange}
                 />
@@ -90,14 +92,14 @@ const PlaceOrder = () => {
                     <input
                         type="text"
                         name="city"
-                        placeholder="City"
+                        placeholder={useContext(LanguageContext).t("cart.placeholder.city")}
                         required
                         onChange={handleChange}
                     />
                     <input
                         type="text"
                         name="state"
-                        placeholder="State"
+                        placeholder={useContext(LanguageContext).t("cart.placeholder.state")}
                         required
                         onChange={handleChange}
                     />
@@ -107,14 +109,14 @@ const PlaceOrder = () => {
                     <input
                         type="text"
                         name="zip"
-                        placeholder="Zip code"
+                        placeholder={useContext(LanguageContext).t("cart.placeholder.zip")}
                         required
                         onChange={handleChange}
                     />
                     <input
                         type="text"
                         name="country"
-                        placeholder="Country"
+                        placeholder={useContext(LanguageContext).t("cart.placeholder.country")}
                         required
                         onChange={handleChange}
                     />
@@ -123,7 +125,7 @@ const PlaceOrder = () => {
                 <input
                     type="text"
                     name="phone"
-                    placeholder="Phone"
+                    placeholder={useContext(LanguageContext).t("cart.placeholder.phone")}
                     required
                     onChange={handleChange}
                 />
@@ -131,27 +133,27 @@ const PlaceOrder = () => {
 
             <div className="place-order-right">
                 <div className="cart-total">
-                    <h2>Cart Totals</h2>
+                    <h2>{useContext(LanguageContext).t("cart.totals")}</h2>
 
                     <div className="cart-total-details">
-                        <p>Subtotal</p>
+                        <p>{useContext(LanguageContext).t("cart.subtotal")}</p>
                         <p>${getTotalCartAmount()}</p>
                     </div>
                     <hr />
 
                     <div className="cart-total-details">
-                        <p>Delivery Fee</p>
+                        <p>{useContext(LanguageContext).t("cart.deliveryFee")}</p>
                         <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
                     </div>
                     <hr />
 
                     <div className="cart-total-details">
-                        <p>Total</p>
+                        <p>{useContext(LanguageContext).t("cart.total")}</p>
                         <p>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</p>
                     </div>
 
                     <button type="submit">
-                        PROCEED TO PAYMENT
+                        {useContext(LanguageContext).t("cart.proceed")}
                     </button>
                 </div>
             </div>

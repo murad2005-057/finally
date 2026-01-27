@@ -34,6 +34,30 @@
   gap: 20px;
 }
 
+.navbar-language-select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, #ffffff, #f7f7f9);
+  cursor: pointer;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.navbar-language-select select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(195,34,34,0.08);
+}
+
+/* Smaller select on mobile */
+@media (max-width: 750px) {
+  .navbar-language-select { display: none; }
+}
+
 /* Səbət nöqtəsi */
 .navbar-search-icon { position: relative; }
 .navbar-search-icon img { width: 22px; }

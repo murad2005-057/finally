@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from "react-router-dom"   // ✅ ƏLAVƏ
 import './LoginPopup.css'
 import { assets } from '../../assets/assets'
+import { LanguageContext } from '../../i18n/LanguageProvider'
 
 const LoginPopup = ({ setShowLogin }) => {
 
@@ -14,6 +15,8 @@ const LoginPopup = ({ setShowLogin }) => {
         password: ""
     })
 
+    const { t } = useContext(LanguageContext)
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -25,15 +28,15 @@ const LoginPopup = ({ setShowLogin }) => {
         e.preventDefault()
 
         // ================= REGISTER =================
-        if (currState === "Sign Up") {
+        if (currState === t("login.signUp") || currState === "Sign Up") {
             await fetch("http://localhost:3000/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             })
 
-            alert("Register successful. Please login.")
-            setCurrState("Login")
+            alert(t("login.registerSuccess"))
+            setCurrState(t("login.login"))
             return
         }
 
@@ -46,7 +49,7 @@ const LoginPopup = ({ setShowLogin }) => {
         )
 
         if (!foundUser) {
-            alert("Email or password is incorrect")
+            alert(t("login.invalidCredentials"))
             return
         }
 
@@ -67,7 +70,7 @@ const LoginPopup = ({ setShowLogin }) => {
         const admins = await res.json()
 
         if (admins.length === 0) {
-            alert("Admin not found")
+            alert(t("login.adminNotFound"))
             return
         }
 
@@ -86,7 +89,7 @@ const LoginPopup = ({ setShowLogin }) => {
         <div className='login-popup'>
             <form className="login-popup-container" onSubmit={handleSubmit}>
                 <div className="login-popup-title">
-                    <h2>{currState}</h2>
+                            <h2>{currState}</h2>
                     <img
                         src={assets.cross_icon}
                         alt=""
@@ -95,11 +98,11 @@ const LoginPopup = ({ setShowLogin }) => {
                 </div>
 
                 <div className="login-popup-inputs">
-                    {currState === "Sign Up" && (
+                    {currState === t("login.signUp") || currState === "Sign Up" && (
                         <input
                             type="text"
                             name="name"
-                            placeholder="Your name"
+                            placeholder={t("login.yourName")}
                             required
                             onChange={handleChange}
                         />
@@ -108,7 +111,7 @@ const LoginPopup = ({ setShowLogin }) => {
                     <input
                         type="email"
                         name="email"
-                        placeholder="Your email"
+                        placeholder={t("login.yourEmail")}
                         required
                         onChange={handleChange}
                     />
@@ -116,14 +119,14 @@ const LoginPopup = ({ setShowLogin }) => {
                     <input
                         type="password"
                         name="password"
-                        placeholder="Password"
+                        placeholder={t("login.password")}
                         required
                         onChange={handleChange}
                     />
                 </div>
 
                 <button type="submit">
-                    {currState === "Sign Up" ? "Create account" : "Login"}
+                    {currState === t("login.signUp") || currState === "Sign Up" ? t("login.createAccount") : t("login.loginBtn")}
                 </button>
 
                 <button
@@ -131,12 +134,12 @@ const LoginPopup = ({ setShowLogin }) => {
                     className="guest-btn"
                     onClick={handleGuest}
                 >
-                    Continue as Guest
+                    {t("login.continueGuest")}
                 </button>
 
-                {currState === "Login"
-                    ? <p>Create a new account? <span onClick={() => setCurrState("Sign Up")}>Click here</span></p>
-                    : <p>Already have an account? <span onClick={() => setCurrState("Login")}>Login here</span></p>
+                {currState === t("login.login") || currState === "Login"
+                    ? <p>{t("login.createNewAccount")} <span onClick={() => setCurrState(t("login.signUp"))}>{t("login.clickHere")}</span></p>
+                    : <p>{t("login.alreadyHave")} <span onClick={() => setCurrState(t("login.login"))}>{t("login.loginHere")}</span></p>
                 }
             </form>
         </div>

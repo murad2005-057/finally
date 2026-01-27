@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Footer.css";
 import { assets } from "../../assets/assets";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
+import { LanguageContext } from '../../i18n/LanguageProvider'
 
 const Footer = () => {
   return (
     <div className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <h1>Arsenal Restaurant</h1>
+          <h1>{useContext(LanguageContext).t("brand")}</h1>
 
           <div className="footer-social-icons">
             <a href="https://www.facebook.com/Arsenal/" target="_blank" rel="noopener noreferrer">
@@ -26,7 +27,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-content-right">
-          <h2>GET IN TOUCH</h2>
+          <h2>{useContext(LanguageContext).t("footer.getInTouch")}</h2>
           <ul>
             <li>+1-212-456-7890</li>
             <li>contact@arsenal-restaurant.com</li>

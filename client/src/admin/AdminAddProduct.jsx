@@ -1,38 +1,36 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "../admin/AdminAddProduct.css";
+import { LanguageContext } from "../i18n/LanguageProvider";
 
 const AdminAddProduct = () => {
   const [form, setForm] = useState({
     name: "",
     price: "",
     image: "",
-    description: "", // Yeni sahə
-    category: ""    // Yeni sahə
+    description: "",
+    category: "",
   });
 
   const navigate = useNavigate();
+  const { t } = useContext(LanguageContext);
 
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Qiyməti rəqəmə çevirmək (isteğe bağlı, amma data keyfiyyəti üçün yaxşıdır)
-    const payload = {
-      ...form,
-      price: Number(form.price)
-    };
+    const payload = { ...form, price: Number(form.price) };
 
     await fetch("http://localhost:3000/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     });
 
     navigate("/admin/product");
@@ -40,12 +38,12 @@ const AdminAddProduct = () => {
 
   return (
     <div className="add-product-container">
-      <h2>Add Product</h2>
+      <h2>{t("admin.addProduct.title")}</h2>
 
       <form className="add-product-form" onSubmit={handleSubmit}>
         <input
           name="name"
-          placeholder="Product name"
+          placeholder={t("admin.placeholder.name")}
           onChange={handleChange}
           required
         />
@@ -53,34 +51,33 @@ const AdminAddProduct = () => {
         <input
           name="price"
           type="number"
-          placeholder="Price"
+          placeholder={t("admin.placeholder.price")}
           onChange={handleChange}
           required
         />
 
         <input
           name="category"
-          placeholder="Category (e.g. Noodles, Salad)"
+          placeholder={t("admin.placeholder.category")}
           onChange={handleChange}
           required
         />
 
         <input
           name="image"
-          placeholder="Image path (e.g. /src/assets/food_32.png)"
+          placeholder={t("admin.placeholder.image")}
           onChange={handleChange}
           required
         />
 
-        {/* Description üçün daha geniş yazı alanı (textarea) daha yaxşı olar */}
         <textarea
           name="description"
-          placeholder="Description"
+          placeholder={t("admin.placeholder.description")}
           onChange={handleChange}
           required
         ></textarea>
 
-        <button type="submit">Add Product</button>
+        <button type="submit">{t("admin.addButton")}</button>
       </form>
     </div>
   );
