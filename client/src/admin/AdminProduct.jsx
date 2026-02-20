@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminProduct.css";
 import { LanguageContext } from '../i18n/LanguageProvider'
+import API_URL from "../config/api"
 
 const ITEMS_PER_SECTION = 10;
 
@@ -9,15 +10,16 @@ const AdminProduct = () => {
   const [products, setProducts] = useState([]);
   const [section, setSection] = useState(0);
   const navigate = useNavigate();
+  const { t } = useContext(LanguageContext);
 
   useEffect(() => {
-    fetch("http://localhost:3000/products")
+    fetch(`${API_URL}/products`)
       .then(res => res.json())
       .then(data => setProducts(data));
   }, []);
 
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:3000/products/${id}`, {
+    await fetch(`${API_URL}/products/${id}`, {
       method: "DELETE"
     });
     
@@ -57,8 +59,8 @@ const AdminProduct = () => {
         {currentProducts.map(product => (
           <div className="product-card" key={product.id}>
             <img src={product.image} alt={product.name} />
-            <h4>{product.name}</h4>
-            <p>{product.price} ₼</p>
+            <h4>{t(product.name)}</h4>
+            <p>{product.price} $</p>
 
             <button
               className="delete-btn"

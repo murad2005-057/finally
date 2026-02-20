@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "../admin/AdminAddProduct.css";
 import { LanguageContext } from "../i18n/LanguageProvider";
+import API_URL from "../config/api";
 
 const AdminAddProduct = () => {
   const [form, setForm] = useState({
@@ -27,7 +28,7 @@ const AdminAddProduct = () => {
 
     const payload = { ...form, price: Number(form.price) };
 
-    await fetch("http://localhost:3000/products", {
+    await fetch(`${API_URL}/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

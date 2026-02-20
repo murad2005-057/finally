@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { food_list } from "../assets/assets";
+import API_URL from "../config/api";
 
 export const StoreContext = createContext(null)
 
@@ -10,7 +11,7 @@ const StoreContextProvider = (props) => {
 
     // Load products from backend (json-server) so newly added products are known
     useEffect(() => {
-        fetch("http://localhost:3000/delivery")
+        fetch(`${API_URL}/delivery`)
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(() => setProducts([]))
@@ -31,7 +32,7 @@ const StoreContextProvider = (props) => {
         }
 
         // Otherwise fetch the product from backend, add to products, then increment cart
-        fetch(`http://localhost:3000/products/${key}`)
+        fetch(`${API_URL}/products/${key}`)
             .then(res => {
                 if (!res.ok) throw new Error('Not found')
                 return res.json()

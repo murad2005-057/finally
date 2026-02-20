@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react"
 import { LanguageContext } from '../i18n/LanguageProvider'
+import API_URL from '../config/api'
 
 const Admin = () => {
 
@@ -15,7 +16,7 @@ const Admin = () => {
         }
 
         // admin məlumatlarını DB-dən çək
-        fetch("http://localhost:3000/users?role=admin")
+        fetch(`${API_URL}/users?role=admin`)
             .then(res => res.json())
             .then(data => {
                 // adətən 1 admin olur

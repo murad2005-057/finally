@@ -14,12 +14,13 @@ const AdminLayout = () => {
     <div className="admin-layout">
 
 
-      
+
       <aside className="admin-sidebar">
-        
+
         <h3>{useContext(LanguageContext).t("admin.brand")}</h3>
 
         <NavLink to="/admin/product">{useContext(LanguageContext).t("admin.product")}</NavLink>
+        <NavLink to="/admin/menu">{useContext(LanguageContext).t("admin.menu") || "Menu"}</NavLink>
 
       </aside>
 

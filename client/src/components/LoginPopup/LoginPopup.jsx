@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"   // ✅ ƏLAVƏ
 import './LoginPopup.css'
 import { assets } from '../../assets/assets'
 import { LanguageContext } from '../../i18n/LanguageProvider'
+import API_URL from '../../config/api'
 
 const LoginPopup = ({ setShowLogin }) => {
 
@@ -29,7 +30,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
         // ================= REGISTER =================
         if (currState === "signup") {
-            await fetch("http://localhost:3000/users", {
+            await fetch(`${API_URL}/users`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
@@ -41,7 +42,7 @@ const LoginPopup = ({ setShowLogin }) => {
         }
 
         // ================= LOGIN =================
-        const res = await fetch("http://localhost:3000/users")
+        const res = await fetch(`${API_URL}/users`)
         const users = await res.json()
 
         const foundUser = users.find(
@@ -66,7 +67,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
     // ================= ADMIN QUICK LOGIN =================
     const handleAdminLogin = async () => {
-        const res = await fetch("http://localhost:3000/users?role=admin")
+        const res = await fetch(`${API_URL}/users?role=admin`)
         const admins = await res.json()
 
         if (admins.length === 0) {

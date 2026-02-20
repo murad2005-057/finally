@@ -54,26 +54,11 @@ const Navbar = ({ setShowLogin }) => {
           </Link>
         </li>
 
-        {/* Giriş/Çıxış Düyməsi */}
-        <li className="navbar-menu-btn-wrapper">
-          {!user ? (
-            <button className="nav-btn" onClick={() => { setShowLogin(true); closeMenu(); }}>{t("signIn")}</button>
-          ) : (
-            <button className="nav-btn" onClick={handleLogout}>{t("logOut")}</button>
-          )}
-        </li>
+     
       </ul>
 
       {/* Kompüter rejimi üçün sağ tərəf (Mobildə gizlənəcək) */}
       <div className="navbar-right-desktop">
-
-        
-        <div className="navbar-search-icon">
-          <Link to="/cart">
-            <img src={assets.basket_icon} alt={t("basketAlt")} />
-          </Link>
-          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
-        </div>
         <div className="navbar-language-select">
           <select value={language} onChange={(e) => setLanguage(e.target.value)} aria-label="Select language">
             <option value="az">AZ - Azərbaycan</option>
@@ -82,6 +67,19 @@ const Navbar = ({ setShowLogin }) => {
             <option value="ar">AR - العربية</option>
             <option value="uz">UZ - O'zbek</option>
           </select>
+        </div>
+        <div className="navbar-search-icon">
+          <Link to="/cart">
+            <img src={assets.basket_icon} alt={t("basketAlt")} />
+          </Link>
+          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+        </div>
+        <div className="navbar-desktop-auth">
+          {!user ? (
+            <button className="nav-btn" onClick={() => setShowLogin(true)}>{t("signIn")}</button>
+          ) : (
+            <button className="nav-btn" onClick={handleLogout}>{t("logOut")}</button>
+          )}
         </div>
       </div>
     </div>

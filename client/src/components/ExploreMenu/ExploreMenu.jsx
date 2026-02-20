@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react'
 import './ExploreMenu.css'
 import { LanguageContext } from '../../i18n/LanguageProvider'
+import API_URL from '../../config/api'
 
 const ExploreMenu = ({ category, setCategory }) => {
 
     const [menuList, setMenuList] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/menu")
+        fetch(`${API_URL}/menu`)
             .then(res => res.json())
             .then(data => setMenuList(data))
             .catch(err => console.error("Menu fetch error:", err))
@@ -35,10 +36,10 @@ const ExploreMenu = ({ category, setCategory }) => {
                     >
                         <img
                             src={item.menu_image}
-                            alt={item.menu_name}
+                            alt={t(item.menu_name)}
                             className={category === item.menu_name ? "active" : ""}
                         />
-                        <p>{item.menu_name}</p>
+                        <p>{t(item.menu_name)}</p>
                     </div>
                 ))}
             </div>

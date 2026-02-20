@@ -27,7 +27,7 @@
     {
       "id": "74fa",
       "name": "ibrahim",
-      "email": "ibrahim@gamil.com",
+      "email": "ibrahim@gmail.com",
       "password": "12345678"
     },
     {
@@ -38,31 +38,37 @@
       "role": "admin"
     },
     {
-      "id": "d05f",
-      "name": "       ",
-      "email": "////////@gamil.com",
-      "password": "        "
-    },
-    {
       "id": "1226",
       "name": "Abbaslı Murad",
       "email": "info1murad@gmail.com",
       "password": "123456789"
+    },
+    {
+      "id": "835e",
+      "name": "ferhan",
+      "email": "ferhan123@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "88fe",
+      "name": "ibrahim",
+      "email": "ibrahim1607@gmail.com",
+      "password": "1607"
     }
   ],
   "delivery": [
     {
       "id": "85e3",
-      "user": "ibrahim@gamil.com",
+      "user": "ibrahim@gmail.com",
       "deliveryInfo": {
         "firstName": "ibrahim",
         "lastName": "humbetli",
-        "email": "ibrahim@gamil.com",
+        "email": "ibrahim@gmail.com",
         "street": "1233",
-        "city": "Azerbaijan",
-        "state": "Baku",
+        "city": "Baku",
+        "state": "Nerimanov",
         "zip": "123",
-        "country": "Nerimanov",
+        "country": "Azerbaijan",
         "phone": "0101000001"
       },
       "subtotal": 42,
@@ -76,12 +82,12 @@
       "deliveryInfo": {
         "firstName": "ibrahim",
         "lastName": "humbetli",
-        "email": "ibrahim@gamil.com",
+        "email": "ibrahim@gmail.com",
         "street": "1233",
-        "city": "Azerbaijan",
-        "state": "vasingthon",
+        "city": "Baku",
+        "state": "Washington",
         "zip": "123",
-        "country": "Nerimanov",
+        "country": "Azerbaijan",
         "phone": "0101000001"
       },
       "subtotal": 36,
@@ -121,7 +127,7 @@
       "image": "/src/assets/food_4.png",
       "price": 24,
       "description": "Food provides essential nutrients for overall health and well-being",
-      "category": "Deserts"
+      "category": "Desserts"
     },
     {
       "id": "5",
@@ -161,7 +167,7 @@
       "image": "/src/assets/food_9.png",
       "price": 14,
       "description": "Food provides essential nutrients for overall health and well-being",
-      "category": "Deserts"
+      "category": "Desserts"
     },
     {
       "id": "10",
@@ -169,7 +175,7 @@
       "image": "/src/assets/food_10.png",
       "price": 22,
       "description": "Food provides essential nutrients for overall health and well-being",
-      "category": "Deserts"
+      "category": "Desserts"
     },
     {
       "id": "11",
@@ -177,7 +183,7 @@
       "image": "/src/assets/food_11.png",
       "price": 10,
       "description": "Food provides essential nutrients for overall health and well-being",
-      "category": "Deserts"
+      "category": "Desserts"
     },
     {
       "id": "12",
@@ -185,7 +191,7 @@
       "image": "/src/assets/food_12.png",
       "price": 12,
       "description": "Food provides essential nutrients for overall health and well-being",
-      "category": "Deserts"
+      "category": "Desserts"
     },
     {
       "id": "13",
@@ -253,7 +259,7 @@
     },
     {
       "id": "21",
-      "name": "Garlic Mushroom ",
+      "name": "Garlic Mushroom",
       "image": "/src/assets/food_21.png",
       "price": 14,
       "description": "Food provides essential nutrients for overall health and well-being",
@@ -317,7 +323,7 @@
     },
     {
       "id": "29",
-      "name": "Buttter Noodles",
+      "name": "Butter Noodles",
       "image": "/src/assets/food_29.png",
       "price": 14,
       "description": "Food provides essential nutrients for overall health and well-being",
@@ -360,7 +366,7 @@
       "id": "dc8d"
     },
     {
-      "menu_name": "Deserts",
+      "menu_name": "Desserts",
       "menu_image": "/src/assets/menu_3.png",
       "id": "4631"
     },
