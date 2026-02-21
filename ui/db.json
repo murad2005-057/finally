@@ -54,6 +54,12 @@
       "name": "ibrahim",
       "email": "ibrahim1607@gmail.com",
       "password": "1607"
+    },
+    {
+      "id": "9b7e",
+      "name": "murad",
+      "email": "murad2@gmail.com",
+      "password": "123456"
     }
   ],
   "delivery": [
@@ -94,6 +100,72 @@
       "deliveryFee": 2,
       "total": 38,
       "createdAt": "2026-01-14T07:28:55.377Z"
+    },
+    {
+      "id": "79f8",
+      "userId": "9b7e",
+      "user": "murad2@gmail.com",
+      "userInfo": {
+        "id": "9b7e",
+        "name": "murad",
+        "email": "murad2@gmail.com",
+        "password": "123456"
+      },
+      "deliveryInfo": {
+        "firstName": "ibrahim",
+        "lastName": "humbetli",
+        "email": "infoibo@gmail.com",
+        "street": "1233",
+        "city": "Azerbaijan",
+        "state": "Baku",
+        "zip": "123",
+        "country": "Nerimanov",
+        "phone": "0101000001",
+        "cardNumber": "1234567812345678",
+        "expiryDate": "09/28",
+        "cvv": "999"
+      },
+      "cardInfo": {
+        "cardNumber": "1234567812345678"
+      },
+      "products": [
+        {
+          "_id": "26",
+          "name": "product.26.name",
+          "image": "/src/assets/food_26.png",
+          "price": 18,
+          "description": "product.26.desc",
+          "category": "Pasta",
+          "quantity": 1,
+          "total": 18
+        },
+        {
+          "_id": "30",
+          "name": "product.30.name",
+          "image": "/src/assets/food_30.png",
+          "price": 12,
+          "description": "product.30.desc",
+          "category": "Noodles",
+          "quantity": 1,
+          "total": 12
+        },
+        {
+          "_id": "32",
+          "name": "product.32.name",
+          "image": "/src/assets/food_32.png",
+          "price": 15,
+          "description": "product.32.desc",
+          "category": "Noodles",
+          "quantity": 1,
+          "total": 15
+        }
+      ],
+      "amount": 47,
+      "currency": "$",
+      "subtotal": 45,
+      "deliveryFee": 2,
+      "total": 47,
+      "createdAt": "2026-02-21T04:31:22.484Z"
     }
   ],
   "products": [
@@ -359,11 +431,6 @@
       "menu_name": "Salad",
       "menu_image": "/src/assets/menu_1.png",
       "id": "3607"
-    },
-    {
-      "menu_name": "Rolls",
-      "menu_image": "/src/assets/menu_2.png",
-      "id": "dc8d"
     },
     {
       "menu_name": "Desserts",

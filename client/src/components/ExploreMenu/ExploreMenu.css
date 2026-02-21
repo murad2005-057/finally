@@ -5,13 +5,18 @@
 }
 
 .explore-menu h1 {
-    color: #262626;
+    color: var(--text-color);
     font-weight: 500;
 }
 
 .explore-menu-text {
     max-width: 60%;
-    columns: #808080;
+    color: var(--secondary-text);
+}
+
+.explore-menu-list-wrapper {
+    overflow: hidden;
+    width: 100%;
 }
 
 .explore-menu-list {
@@ -21,11 +26,20 @@
     gap: 30px;
     text-align: center;
     margin: 20px 0px;
-    overflow: scroll;
 }
 
-.explore-menu-list::-webkit-scrollbar {
+.explore-menu-list-item {
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.explore-menu-list-item:hover {
+    transform: scale(1.1);
+}
+
+.mobile-only {
     display: none;
+    /* Hide duplicates on desktop */
 }
 
 .explore-menu-list-item img {
@@ -33,26 +47,32 @@
     min-width: 80px;
     cursor: pointer;
     border-radius: 50%;
-    transition: 0.2s;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+}
+
+.explore-menu-list-item:hover img {
+    box-shadow: 0px 8px 20px rgba(59, 130, 246, 0.3);
+    border-color: #3b82f6;
 }
 
 .explore-menu-list-item p {
-    margin-top: 10px;
-  background: linear-gradient(
-    180deg,
-    rgba(195, 34, 34, 1) 27%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  color: transparent;
-  background-clip: text;
+    margin-top: 15px;
+    color: var(--secondary-text);
     font-size: max(1.4vw, 16px);
     cursor: pointer;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.explore-menu-list-item:hover p {
+    color: var(--text-color);
 }
 
 .explore-menu hr {
     margin: 10px 0px;
     height: 2px;
-    background-color: #e2e2e2;
+    background-color: var(--border-color);
     border: none;
 }
 
@@ -61,9 +81,51 @@
     padding: 2px;
 }
 
-@media (max-withd:1050px) {
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 1050px) {
     .explore-menu-text {
         max-width: 100%;
         font-size: 14px;
+    }
+}
+
+@media (max-width: 750px) {
+    .mobile-only {
+        display: block;
+        /* Show duplicates on mobile for infinite loop */
+    }
+
+    .explore-menu-list {
+        justify-content: flex-start;
+        gap: 40px;
+        width: max-content;
+        animation: scroll 25s linear infinite;
+    }
+
+    .explore-menu-list:hover {
+        animation-play-state: paused;
+    }
+
+    .explore-menu-list-item img {
+        width: 90px;
+        min-width: 90px;
+    }
+
+    .explore-menu h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .explore-menu-text {
+        text-align: center;
     }
 }

@@ -4,10 +4,11 @@ import { useContext } from "react";
 import { LanguageContext } from "../i18n/LanguageProvider";
 
 const AdminLayout = () => {
+  const { t } = useContext(LanguageContext);
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (!user || user.role !== "admin") {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   return (
@@ -17,10 +18,10 @@ const AdminLayout = () => {
 
       <aside className="admin-sidebar">
 
-        <h3>{useContext(LanguageContext).t("admin.brand")}</h3>
+        <h3>{t("admin.brand")}</h3>
 
-        <NavLink to="/admin/product">{useContext(LanguageContext).t("admin.product")}</NavLink>
-        <NavLink to="/admin/menu">{useContext(LanguageContext).t("admin.menu") || "Menu"}</NavLink>
+        <NavLink to="/admin/product">{t("admin.product")}</NavLink>
+        <NavLink to="/admin/menu">{t("menu")}</NavLink>
 
       </aside>
 

@@ -29,16 +29,21 @@ const FoodDisplay = ({ category }) => {
                         // 2. Müqayisəni hər iki tərəfi kiçik hərfə çevirərək et (Hərf həssaslığını aradan qaldırır)
                         return item.category?.toLowerCase() === category?.toLowerCase();
                     })
-                    .map((item) => (
-                        <FoodItem
-                            key={item.id}
-                            id={item.id}
-                            name={`product.${item.id}.name`}
-                            description={`product.${item.id}.desc`}
-                            price={item.price}
-                            image={item.image}
-                        />
-                    ))
+                    .map((item) => {
+                        const nameKey = `product.${item.id}.name`;
+                        const descKey = `product.${item.id}.desc`;
+
+                        return (
+                            <FoodItem
+                                key={item.id}
+                                id={item.id}
+                                name={t(nameKey) !== nameKey ? nameKey : item.name}
+                                description={t(descKey) !== descKey ? descKey : item.description}
+                                price={item.price}
+                                image={item.image}
+                            />
+                        )
+                    })
                 }
             </div>
         </div>

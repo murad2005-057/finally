@@ -26,6 +26,7 @@
   "admin.product": "Məhsul",
 
   "cart.deliveryInformation": "Çatdırılma məlumatları",
+  "cart.paymentInformation": "Ödəniş məlumatları",
   "cart.placeholder.firstName": "Ad",
   "cart.placeholder.lastName": "Soyad",
   "cart.placeholder.email": "E-poçt ünvanı",
@@ -39,7 +40,13 @@
   "cart.subtotal": "Ara cəmi",
   "cart.deliveryFee": "Çatdırılma haqqı",
   "cart.total": "Cəmi",
-  "cart.proceed": "ÖDƏMƏYƏ KEÇ",
+  "cart.proceed": "Yoxlamaya Keç",
+  "cart.items": "Məhsullar",
+  "cart.title": "Ad",
+  "cart.price": "Qiymət",
+  "cart.quantity": "Say",
+  "cart.total_item": "Cəmi",
+  "cart.remove": "Sil",
 
   "order.success": "Sifariş uğurla yerləşdirildi!",
   "order.thankYou": "Alış-veriş üçün təşəkkürlər! Sifarişiniz işlənir.",
@@ -78,7 +85,9 @@
   ,
   "admin.products": "Məhsullar",
   "admin.delete": "Sil",
-  "admin.addProductCard": "Məhsul əlavə et"
+  "admin.edit": "Düzəliş et",
+  "admin.addProductCard": "Məhsul əlavə et",
+  "admin.addMenu": "Menyu əlavə et"
   ,
   "product.1.name": "Greek salad",
   "product.1.desc": "Yemək ümumi sağlamlıq və rifah üçün vacib qida maddələri təmin edir",

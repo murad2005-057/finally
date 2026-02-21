@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"   // ✅ ƏLAVƏ
 import './LoginPopup.css'
 import { assets } from '../../assets/assets'
 import { LanguageContext } from '../../i18n/LanguageProvider'
+import { StoreContext } from '../../conText/StoreContext'
 import API_URL from '../../config/api'
 
 const LoginPopup = ({ setShowLogin }) => {
@@ -17,6 +18,7 @@ const LoginPopup = ({ setShowLogin }) => {
     })
 
     const { t } = useContext(LanguageContext)
+    const { setUser } = useContext(StoreContext)
 
     const handleChange = (e) => {
         setFormData({
@@ -28,69 +30,86 @@ const LoginPopup = ({ setShowLogin }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        // ================= REGISTER =================
-        if (currState === "signup") {
-            await fetch(`${API_URL}/users`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData)
-            })
+        try {
+            // ================= REGISTER =================
+            if (currState === "signup") {
+                const registerRes = await fetch(`${API_URL}/users`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData)
+                })
 
-            alert(t("login.registerSuccess"))
-            setCurrState("login")
-            return
-        }
+                if (!registerRes.ok) throw new Error("Registration failed");
 
-        // ================= LOGIN =================
-        const res = await fetch(`${API_URL}/users`)
-        const users = await res.json()
+                const newUser = await registerRes.json();
+                localStorage.setItem("user", JSON.stringify(newUser))
+                setUser(newUser)
+                setShowLogin(false)
+                navigate("/")
+                return
+            }
 
-        const foundUser = users.find(
-            u => u.email === formData.email && u.password === formData.password
-        )
+            // ================= LOGIN =================
+            const res = await fetch(`${API_URL}/users`)
+            const users = await res.json()
 
-        if (!foundUser) {
-            alert(t("login.invalidCredentials"))
-            return
-        }
+            const foundUser = users.find(
+                u => u.email === formData.email && u.password === formData.password
+            )
 
-        localStorage.setItem("user", JSON.stringify(foundUser))
-        setShowLogin(false)
+            if (!foundUser) {
+                alert(t("login.invalidCredentials"))
+                return
+            }
 
-        // ✅ ADMIN / USER YÖNLƏNDİRMƏ
-        if (foundUser.role === "admin") {
-            navigate("/admin")
-        } else {
-            navigate("/")
+            localStorage.setItem("user", JSON.stringify(foundUser))
+            setUser(foundUser)
+            setShowLogin(false)
+
+            // ✅ ADMIN / USER YÖNLƏNDİRMƏ
+            if (foundUser.role === "admin") {
+                navigate("/admin")
+            } else {
+                navigate("/")
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Connection error. Please try again later.");
         }
     }
 
     // ================= ADMIN QUICK LOGIN =================
     const handleAdminLogin = async () => {
-        const res = await fetch(`${API_URL}/users?role=admin`)
-        const admins = await res.json()
+        try {
+            const res = await fetch(`${API_URL}/users?role=admin`)
+            const admins = await res.json()
 
-        if (admins.length === 0) {
-            alert(t("login.adminNotFound"))
-            return
+            if (admins.length === 0) {
+                alert(t("login.adminNotFound"))
+                return
+            }
+
+            const adminUser = admins[0]
+            localStorage.setItem("user", JSON.stringify(adminUser))
+            setUser(adminUser)
+            setShowLogin(false)
+            navigate("/admin")
+        } catch (error) {
+            console.error(error);
         }
-
-        localStorage.setItem("user", JSON.stringify(admins[0]))
-        setShowLogin(false)
-        navigate("/admin")        // ✅ DÜZƏLDİ
     }
 
     // ================= GUEST =================
     const handleGuest = () => {
         setShowLogin(false)
-        navigate("/")             // ✅ DÜZƏLDİ
+        navigate("/")
     }
 
     return (
-        <div className='login-popup'>
-            <form className="login-popup-container" onSubmit={handleSubmit}>
+        <div className='login-popup' onClick={() => setShowLogin(false)}>
+            <form className="login-popup-container" onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()}>
                 <div className="login-popup-title">
-                            <h2>{currState === "signup" ? t("login.signUp") : t("login.login")}</h2>
+                    <h2>{currState === "signup" ? t("login.signUp") : t("login.login")}</h2>
                     <img
                         src={assets.cross_icon}
                         alt=""

@@ -1,0 +1,57 @@
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.not-found-content h1 {
+    font-size: 120px;
+    font-weight: 800;
+    margin: 0;
+    color: tomato;
+    line-height: 1;
+}
+
+.not-found-content h2 {
+    font-size: 32px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.not-found-content p {
+    color: #666;
+    max-width: 500px;
+    margin: 15px auto 30px;
+    font-size: 18px;
+}
+
+.not-found-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    background-color: tomato;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.not-found-btn:hover {
+    background-color: #e65c40;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 99, 71, 0.3);
+}
+
+@media (max-width: 750px) {
+    .not-found-content h1 {
+        font-size: 80px;
+    }
+
+    .not-found-content h2 {
+        font-size: 24px;
+    }
+}

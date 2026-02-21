@@ -22,7 +22,7 @@ const AdminProduct = () => {
     await fetch(`${API_URL}/products/${id}`, {
       method: "DELETE"
     });
-    
+
     const updatedProducts = products.filter(p => p.id !== id);
     setProducts(updatedProducts);
 
@@ -39,12 +39,12 @@ const AdminProduct = () => {
 
   return (
     <div>
-      <h2>{useContext(LanguageContext).t("admin.products")}</h2>
+      <h2>{t("admin.products")}</h2>
 
       {/* SECTION NAV */}
       <div className="section-nav">
         {Array.from({ length: sectionsCount }).map((_, i) => (
-            <button
+          <button
             key={i}
             className={section === i ? "active" : ""}
             onClick={() => setSection(i)}
@@ -59,14 +59,21 @@ const AdminProduct = () => {
         {currentProducts.map(product => (
           <div className="product-card" key={product.id}>
             <img src={product.image} alt={product.name} />
-            <h4>{t(product.name)}</h4>
-            <p>{product.price} $</p>
+            <h4>{t(`product.${product.id}.name`) !== `product.${product.id}.name` ? t(`product.${product.id}.name`) : t(product.name)}</h4>
+            <p>{t("currency")}{product.price}</p>
+
+            <button
+              className="edit-btn"
+              onClick={() => navigate(`/admin/product/edit/${product.id}`)}
+            >
+              {t("admin.edit")}
+            </button>
 
             <button
               className="delete-btn"
               onClick={() => deleteProduct(product.id)}
             >
-              {useContext(LanguageContext).t("admin.delete")}
+              {t("admin.delete")}
             </button>
           </div>
         ))}
@@ -78,7 +85,7 @@ const AdminProduct = () => {
             onClick={() => navigate("/admin/product/add")}
           >
             <span>＋</span>
-            <p>{useContext(LanguageContext).t("admin.addProductCard")}</p>
+            <p>{t("admin.addProductCard")}</p>
           </div>
         )}
       </div>

@@ -23,25 +23,27 @@ const ExploreMenu = ({ category, setCategory }) => {
                 {t("explore.subtitle")}
             </p>
 
-            <div className="explore-menu-list">
-                {menuList.map((item) => (
-                    <div
-                        key={item.id}
-                        onClick={() =>
-                            setCategory(prev =>
-                                prev === item.menu_name ? "All" : item.menu_name
-                            )
-                        }
-                        className='explore-menu-list-item'
-                    >
-                        <img
-                            src={item.menu_image}
-                            alt={t(item.menu_name)}
-                            className={category === item.menu_name ? "active" : ""}
-                        />
-                        <p>{t(item.menu_name)}</p>
-                    </div>
-                ))}
+            <div className="explore-menu-list-wrapper">
+                <div className="explore-menu-list">
+                    {[...menuList, ...menuList].map((item, index) => (
+                        <div
+                            key={`${item.id}-${index}`}
+                            onClick={() =>
+                                setCategory(prev =>
+                                    prev === item.menu_name ? "All" : item.menu_name
+                                )
+                            }
+                            className={`explore-menu-list-item ${index >= menuList.length ? 'mobile-only' : ''}`}
+                        >
+                            <img
+                                src={item.menu_image}
+                                alt={t(item.menu_name)}
+                                className={category === item.menu_name ? "active" : ""}
+                            />
+                            <p>{t(item.menu_name)}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             <hr />

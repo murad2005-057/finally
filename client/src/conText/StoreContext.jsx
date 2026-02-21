@@ -11,7 +11,7 @@ const StoreContextProvider = (props) => {
 
     // Load products from backend (json-server) so newly added products are known
     useEffect(() => {
-        fetch(`${API_URL}/delivery`)
+        fetch(`${API_URL}/products`)
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(() => setProducts([]))
@@ -88,6 +88,15 @@ const StoreContextProvider = (props) => {
 
 
 
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
+
     const contextValue = {
         food_list,
         products,
@@ -95,7 +104,9 @@ const StoreContextProvider = (props) => {
         setCartItems,
         addToCart,
         removeFromCart,
-        getTotalCartAmount
+        getTotalCartAmount,
+        user,
+        setUser
     }
 
     return (

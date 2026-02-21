@@ -26,7 +26,9 @@
   "admin.product": "Mahsulot",
   "admin.products": "Mahsulotlar",
   "admin.delete": "Oʻchirish",
+  "admin.edit": "Tahrirlash",
   "admin.addProductCard": "Mahsulot qoʻshish",
+  "admin.addMenu": "Menyu qoʻshish",
 
   "cart.deliveryInformation": "Yetkazib berish ma'lumotlari",
   "cart.placeholder.firstName": "Ism",

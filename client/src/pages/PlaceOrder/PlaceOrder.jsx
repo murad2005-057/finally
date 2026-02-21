@@ -21,7 +21,9 @@ const PlaceOrder = () => {
         zip: "",
         country: "",
         phone: "",
-        cardNumber: ""
+        cardNumber: "",
+        expiryDate: "",
+        cvv: ""
     })
 
     const handleChange = (e) => {
@@ -93,7 +95,7 @@ const PlaceOrder = () => {
             <div className="place-order-left">
                 <p className='title'>{useContext(LanguageContext).t("cart.deliveryInformation")}</p>
 
-                <div className="muliti-fields">
+                <div className="multi-fields">
                     <input
                         type="text"
                         name="firstName"
@@ -118,13 +120,31 @@ const PlaceOrder = () => {
                     onChange={handleChange}
                 />
 
+                <p className='title'>{t("cart.paymentInformation") || "Payment Information"}</p>
                 <input
                     type="text"
                     name="cardNumber"
-                    placeholder="Card Number"
+                    placeholder="Card Number (16 digits)"
                     required
                     onChange={handleChange}
                 />
+
+                <div className="multi-fields">
+                    <input
+                        type="text"
+                        name="expiryDate"
+                        placeholder="MM/YY"
+                        required
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="password"
+                        name="cvv"
+                        placeholder="CVV"
+                        required
+                        onChange={handleChange}
+                    />
+                </div>
 
                 <input
                     type="text"
@@ -134,7 +154,7 @@ const PlaceOrder = () => {
                     onChange={handleChange}
                 />
 
-                <div className="muliti-fields">
+                <div className="multi-fields">
                     <input
                         type="text"
                         name="city"
@@ -151,7 +171,7 @@ const PlaceOrder = () => {
                     />
                 </div>
 
-                <div className="muliti-fields">
+                <div className="multi-fields">
                     <input
                         type="text"
                         name="zip"
@@ -183,19 +203,19 @@ const PlaceOrder = () => {
 
                     <div className="cart-total-details">
                         <p>{useContext(LanguageContext).t("cart.subtotal")}</p>
-                        <p>${getTotalCartAmount()}</p>
+                        <p>{t("currency")}{getTotalCartAmount()}</p>
                     </div>
                     <hr />
 
                     <div className="cart-total-details">
                         <p>{useContext(LanguageContext).t("cart.deliveryFee")}</p>
-                        <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
+                        <p>{t("currency")}{getTotalCartAmount() === 0 ? 0 : 2}</p>
                     </div>
                     <hr />
 
                     <div className="cart-total-details">
                         <p>{useContext(LanguageContext).t("cart.total")}</p>
-                        <p>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</p>
+                        <p>{t("currency")}{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</p>
                     </div>
 
                     <button type="submit">

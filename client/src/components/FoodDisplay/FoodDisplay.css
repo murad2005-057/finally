@@ -5,6 +5,7 @@
 .food-diplay h2 {
     font-size: max(2vw, 24px);
     font-weight: 600;
+    color: var(--text-color);
 }
 
 .food-display-list {

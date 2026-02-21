@@ -6,7 +6,7 @@ import { LanguageContext } from '../../i18n/LanguageProvider'
 
 const FoodItem = ({ id, name, price, description, image }) => {
 
-    const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
+    const { cartItems, addToCart, removeFromCart, user } = useContext(StoreContext);
     const { t } = useContext(LanguageContext)
 
     return (

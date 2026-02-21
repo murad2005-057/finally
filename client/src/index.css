@@ -1,17 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+:root {
+  --bg-color: #ffffff;
+  --text-color: #262626;
+  --secondary-text: #49557e;
+  --navbar-bg: #ffffff;
+  --footer-bg: #323232;
+  --footer-text: #d9d9d9;
+  --input-bg: #ffffff;
+  --border-color: #c3c3c3;
+  --card-bg: #ffffff;
+  --item-bg: #ffffff;
+}
+
+[data-theme='dark'] {
+  --bg-color: #0f172a;
+  --text-color: #f8fafc;
+  --secondary-text: #94a3b8;
+  --navbar-bg: #1e293b;
+  --input-bg: #1e293b;
+  --border-color: #334155;
+  --card-bg: #1e293b;
+  --item-bg: #1e293b;
+  --footer-bg: #1e293b;
+  --footer-text: #94a3b8;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: outfit;
   scroll-behavior: smooth;
-  
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
   min-height: 100vh;
-  
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 a {
@@ -22,7 +49,7 @@ a {
 .app {
   width: 80%;
   margin: auto;
-  
+  min-height: 80vh;
 }
 
 @keyframes fadeIn {

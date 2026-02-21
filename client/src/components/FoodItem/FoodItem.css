@@ -1,10 +1,13 @@
 .food-item {
     width: 100%;
     margin: auto;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px #00000015;
-    transition: 0.3s;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+    background-color: var(--item-bg);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     animation: fadeIn 1s;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
 }
 
 /* ƏSAS PROBLEM BURADA İDİ */
@@ -14,6 +17,8 @@
 
 .food-item-image {
     width: 100%;
+    height: 200px;
+    object-fit: cover;
     border-radius: 15px 15px 0px 0px;
 }
 
@@ -38,7 +43,8 @@
     gap: 10px;
     padding: 6px 10px;
     border-radius: 20px;
-    background-color: white;
+    background-color: var(--input-bg);
+    color: var(--text-color);
     z-index: 2;
 }
 
@@ -56,13 +62,6 @@
 /* INFO */
 .food-item-info {
     padding: 20px;
-    background: linear-gradient(
-        180deg,
-        rgba(195, 34, 34, 1) 27%,
-        rgba(255, 255, 255, 1) 100%
-    );
-    color: transparent;
-    background-clip: text;
 }
 
 .food-item-name-rating {
@@ -73,6 +72,7 @@
 }
 
 .food-item-name-rating p {
+    color: var(--text-color);
     font-size: 20px;
     font-weight: 500;
 }
@@ -82,6 +82,7 @@
 }
 
 .food-item-desc {
+    color: var(--secondary-text);
     font-size: 12px;
 }
 
@@ -91,6 +92,7 @@
     font-weight: 500;
     margin: 10px 0px;
 }
+
 @media (max-width: 600px) {
     .food-item-name-rating img {
         width: 50px;
@@ -107,52 +109,71 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
 }
+
 @keyframes slideInUp {
     from {
         transform: translateY(20px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
     }
 }
+
 .food-item {
     animation: slideInUp 0.5s ease forwards;
 }
+
 .food-item:hover {
-    box-shadow: 0px 0px 15px #00000030;
-    transform: translateY(-5px);
+    transform: translateY(-12px);
+    box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.2);
+    border-color: #3b82f6;
 }
+
+[data-theme='dark'] .food-item:hover {
+    box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.5);
+    background-color: #1e293b;
+}
+
 .food-item-info {
     animation: fadeIn 1s ease forwards;
 }
+
 .food-item-image-container .add:hover {
     transform: scale(1.1);
     transition: 0.3s;
 }
+
 .food-item-counter img:hover {
     transform: scale(1.1);
     transition: 0.3s;
 }
+
 .food-item-counter {
     box-shadow: 0px 0px 10px #00000020;
 }
+
 .food-item-info:hover {
     color: red;
     transition: 0.5s;
 }
+
 @media (max-width: 500px) {
     .food-item-info {
         padding: 15px;
     }
+
     .food-item-name-rating p {
         font-size: 16px;
     }
+
     .food-item-desc {
         font-size: 10px;
     }

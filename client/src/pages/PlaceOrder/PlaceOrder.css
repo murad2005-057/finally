@@ -12,18 +12,20 @@
 }
 
 .place-order-left .title {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 600;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    color: #333;
 }
 
 .place-order-left input {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #c3c3c3;
-    border-radius: 4px;
-    outline-color: red;
+    padding: 12px;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    outline-color: tomato;
+    font-size: 15px;
 }
 
 .place-order-left .multi-fields {
@@ -36,6 +38,65 @@
     max-width: max(40%, 500px);
 }
 
+.cart-total {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-total h2 {
+    color: #333;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+    font-size: 18px;
+}
+
+.cart-total hr {
+    margin: 10px 0px;
+    height: 1px;
+    background-color: #e2e2e2;
+    border: none;
+}
+
 .place-order .cart-total button {
     margin-top: 30px;
+    width: 100%;
+}
+
+@media (max-width: 750px) {
+    .place-order {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .place-order-left {
+        max-width: 100%;
+    }
+
+    .place-order-right {
+        max-width: 100%;
+    }
+
+    .place-order-left .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .multi-fields {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .place-order-left input {
+        padding: 12px;
+    }
 }

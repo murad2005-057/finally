@@ -24,13 +24,20 @@ const AdminMenu = () => {
 
     return (
         <div>
-            <h2>{t("admin.menu") || "Menu Management"}</h2>
+            <h2>{t("menu")}</h2>
 
             <div className="products-grid">
                 {menus.map(menu => (
                     <div className="product-card" key={menu.id}>
-                        <img src={menu.menu_image} alt={menu.menu_name} />
-                        <h4>{menu.menu_name}</h4>
+                        <img src={menu.menu_image} alt={t(menu.menu_name)} />
+                        <h4>{t(menu.menu_name)}</h4>
+
+                        <button
+                            className="edit-btn"
+                            onClick={() => navigate(`/admin/menu/edit/${menu.id}`)}
+                        >
+                            {t("admin.edit")}
+                        </button>
 
                         <button
                             className="delete-btn"
@@ -46,7 +53,7 @@ const AdminMenu = () => {
                     onClick={() => navigate("/admin/menu/add")}
                 >
                     <span>＋</span>
-                    <p>{t("admin.addMenu") || "Add Menu"}</p>
+                    <p>{t("admin.addMenu")}</p>
                 </div>
             </div>
         </div>

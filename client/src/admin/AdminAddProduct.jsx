@@ -8,10 +8,10 @@ const AdminAddProduct = () => {
   const [form, setForm] = useState({
     name: "",
     price: "",
-    image: "",
     description: "",
     category: "",
   });
+  const [image, setImage] = useState(false);
 
   const navigate = useNavigate();
   const { t } = useContext(LanguageContext);
@@ -23,10 +23,21 @@ const AdminAddProduct = () => {
     });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = { ...form, price: Number(form.price) };
+    const payload = { ...form, price: Number(form.price), image: image };
 
     await fetch(`${API_URL}/products`, {
       method: "POST",
@@ -42,6 +53,29 @@ const AdminAddProduct = () => {
       <h2>{t("admin.addProduct.title")}</h2>
 
       <form className="add-product-form" onSubmit={handleSubmit}>
+        <div className="add-img-upload flex-col">
+          <p>{t("admin.uploadImage")}</p>
+          <label htmlFor="image">
+            <div className="upload-box">
+              {image ? (
+                <img src={image} alt="Preview" className="preview-img" />
+              ) : (
+                <div className="upload-placeholder">
+                  <span>＋</span>
+                  <p>{t("admin.clickToUpload")}</p>
+                </div>
+              )}
+            </div>
+          </label>
+          <input
+            onChange={handleImageChange}
+            type="file"
+            id="image"
+            hidden
+            required
+          />
+        </div>
+
         <input
           name="name"
           placeholder={t("admin.placeholder.name")}
@@ -60,13 +94,6 @@ const AdminAddProduct = () => {
         <input
           name="category"
           placeholder={t("admin.placeholder.category")}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          name="image"
-          placeholder={t("admin.placeholder.image")}
           onChange={handleChange}
           required
         />
